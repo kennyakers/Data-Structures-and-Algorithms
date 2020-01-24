@@ -1,0 +1,93 @@
+#Script to print out word counts for the 12 regular expressions below that matchwords in the words.txt file.
+
+#Use "source Homework_19.txt" with the words.txt file in the same directory to run.
+
+echo -e "\nKenny Akers"
+echo "Mr. Paige"
+echo "Homework #19"
+echo -e "3/2/18\n"
+
+regex1="^((.{4})|(.{6}))$"
+regex2="^[aeiou]*$"
+regex3="^([b-df-hj-np-tv-z])[aeiou]([b-df-hj-np-tv-z])$"
+regex4="^.*(er|ier|est|iest)$"
+regex5="^(dog.*cat)|(cat.*dog)"
+regex6="^.*[aeiou]{4,}.*$"
+regex7="ss.*([^s]|[^s]s)$"
+regex8="^[a-z]*(aa|ee|ii|oo|uu)[a-z]*$"
+regex9="^[a-z]{0,}((aa|ee|ii|oo|uu){1,}([a-z]{0,})(aa|ee|ii|oo|uu))[a-z]{0,}$"
+regex10="egrep '^.*(aa|ee|ii|oo|uu).*(aa|ee|ii|oo|uu).*$' -v words.txt | egrep 'aa|ee|ii|oo|uu'" #This is a combination of 2 egreps, 
+regex11="[^aeiou]*a[^aeiou]*e[^aeiou]*i[^aeiou]*o[^aeiou]*u[^aeiou]*"
+regex12="^([^a]*|[^e]*|[^i]*|[^o]*|[^u]*)$"
+
+echo "**** RegEx #1 ****"
+output="$(egrep "$regex1" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex1" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #2 ****"
+output="$(egrep "$regex2" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex2" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #3 ****"
+output="$(egrep "$regex3" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex3" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #4 ****"
+output="$(egrep "$regex4" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex4" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #5 ****"
+output="$(egrep "$regex5" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex5" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #6 ****"
+output="$(egrep "$regex6" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex6" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #7 ****"
+output="$(egrep "$regex7" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex7" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #8 ****"
+output="$(egrep "$regex8" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex8" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #9 ****"
+output="$(egrep "$regex9" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex9" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #10 ****"
+output="$(egrep '^.*(aa|ee|ii|oo|uu).*(aa|ee|ii|oo|uu).*$' -v words.txt | egrep 'aa|ee|ii|oo|uu')"
+#echo "$output"
+word_count="$(egrep '^.*(aa|ee|ii|oo|uu).*(aa|ee|ii|oo|uu).*$' -v words.txt | egrep 'aa|ee|ii|oo|uu' | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #11 ****"
+output="$(egrep "$regex11" words.txt)"
+#echo "$output"
+word_count="$(egrep "$regex11" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
+
+echo "**** RegEx #12 ****"
+output="$(egrep -v "$regex12" words.txt)"
+#echo "$output"
+word_count="$(egrep -v "$regex12" words.txt | wc -l)"
+echo -e "Word Count:$word_count\n"
